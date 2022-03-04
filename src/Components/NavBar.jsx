@@ -2,6 +2,8 @@ import React from "react";
 
 import logo from "../eudaimoniaLogoERound.png";
 
+import CartWidget from "./CartWidget";
+
 function NavBar() {
   return (
     <div>
@@ -33,6 +35,9 @@ function NavBar() {
                 </a>
               </li>
             </ul>
+          </div>
+          <div>
+            <CartWidget class="justify-content-left" />
           </div>
         </div>
       </nav>
