@@ -1,16 +1,8 @@
 import React from "react";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 function CartWidget() {
-  return (
-    <button className="btn btn-outline-secondary">
-      <img
-        src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/000000/external-shopping-cart-miscellaneous-kiranshastry-lineal-kiranshastry.png"
-        alt="icono de carrito de compras"
-        width={20}
-        height={20}
-      />
-    </button>
-  );
+  return <AiOutlineShoppingCart/>;
 }
 
 export default CartWidget;

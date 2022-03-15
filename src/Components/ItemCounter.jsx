@@ -17,9 +17,7 @@ const ItemCounter = ({ stock, initial, onAdd }) => {
   };
 
   return (
-    <div className="card">
-      <h5 className="card-title">Producto 1</h5>
-      <div>
+    <div>
         <button className="btn btn-outline-dark" onClick={restar}>
           -
         </button>
@@ -27,7 +25,6 @@ const ItemCounter = ({ stock, initial, onAdd }) => {
         <button className="btn btn-outline-dark" onClick={sumar}>
           +
         </button>
-      </div>
       <div>
         <button className="btn btn-outline-success" onClick={onAdd}>
           Agregar al carrito

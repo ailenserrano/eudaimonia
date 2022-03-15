@@ -36,7 +36,7 @@ function NavBar() {
               </li>
             </ul>
           </div>
-          <div>
+          <div className="btn btn-outline-secondary">
             <CartWidget class="justify-content-left" />
           </div>
         </div>
