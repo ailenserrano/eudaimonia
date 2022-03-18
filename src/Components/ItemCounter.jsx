@@ -18,13 +18,13 @@ const ItemCounter = ({ stock, initial, onAdd }) => {
 
   return (
     <div>
-        <button className="btn btn-outline-dark" onClick={restar}>
-          -
-        </button>
-        <span> {counter} </span>
-        <button className="btn btn-outline-dark" onClick={sumar}>
-          +
-        </button>
+      <button className="btn btn-outline-dark" onClick={restar}>
+        -
+      </button>
+      <span> {counter} </span>
+      <button className="btn btn-outline-dark" onClick={sumar}>
+        +
+      </button>
       <div>
         <button className="btn btn-outline-success" onClick={onAdd}>
           Agregar al carrito
