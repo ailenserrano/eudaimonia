@@ -1,38 +1,36 @@
 import React from "react";
 import ItemDetail from "./ItemDetail";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 export const ItemDetailContainer = () => {
-  const [item, setItem] = useState(null);
-
+  const { itemId } = useParams();
+  const [producto, setProducto] = useState({});
   const [loading, setLoading] = useState(true);
-
-  const itemId = undefined;
+  const [listaProductos, setListaProductos] = useState([]);
 
   useEffect(() => {
-    setLoading(true);
+    const getProducts = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(
+          fetch("https://mocki.io/v1/66d939b9-5094-4bb3-82d1-ab1d61e829f2")
+            .then((respuesta) => respuesta.json())
+            .then((data) => setListaProductos(data))
+            .catch((error) => console.log(error)),
+          getProducts.finally(() => setLoading(false))
+        );
+      }, 3000);
+    });
 
-    fetch("https://mocki.io/v1/f5276d85-dcd8-4def-951d-267ea5aed625")
-      .then((respuesta) => respuesta.json())
-      .then((data) => {
-        setItem(data.find((prod) => prod.id === Number(itemId)));
-      })
-      .catch((error) => console.log(error))
-      .finally(() => {
-        setLoading(false);
-      });
+    getProducts.then((respuesta) => {
+      setProducto(respuesta.find((e) => e.id == itemId));
+    });
   }, []);
 
   return (
-    <div>
-      {loading ? (
-        <div className="spinner-border m-5" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      ) : (
-        <ItemDetail />
-      )}
-    </div>
+    <>
+      <ItemDetail {...producto} />;
+    </>
   );
 };
 

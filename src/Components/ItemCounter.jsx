@@ -1,36 +1,28 @@
 import React, { useState } from "react";
-import Item from "./Item";
 
-const ItemCounter = ({ stock, initial, onAdd }) => {
-  const [counter, setCounter] = useState(initial);
-
-  const sumar = () => {
-    if (counter < stock) {
-      setCounter(counter + 1);
-    }
-  };
-
-  const restar = () => {
-    if (counter > 0) {
-      setCounter(counter - 1);
-    }
-  };
+const ItemCounter = ({ stock }) => {
+  const [counter, setCounter] = useState(0);
 
   return (
-    <div>
-      <button className="btn btn-outline-dark" onClick={restar}>
-        -
-      </button>
-      <span> {counter} </span>
-      <button className="btn btn-outline-dark" onClick={sumar}>
-        +
-      </button>
-      <div>
-        <button className="btn btn-outline-success" onClick={onAdd}>
-          Agregar al carrito
+    <>
+      <div className="counter">
+        <button
+          onClick={() => {
+            counter !== 0 ? setCounter(counter - 1) : setCounter(counter);
+          }}
+        >
+          -
+        </button>
+        <span>{counter}</span>
+        <button
+          onClick={() => {
+            counter !== stock ? setCounter(counter + 1) : setCounter(counter);
+          }}
+        >
+          +
         </button>
       </div>
-    </div>
+    </>
   );
 };
 
