@@ -1,18 +1,25 @@
 import React from "react";
-import ItemCounter from "./ItemCounter";
+import { Link } from "react-router-dom";
 
-export const Item = ({productos}) => {
-  const onAdd = () => {
-    console.log("Agregué al carrito");
-  };
-
+const Item = ({ id, name, price, category, description, image, stock }) => {
   return (
-    <div>
-      <div className="card">
-        <h5 className="card-title">{productos.name} </h5>
-        <img src={productos.img} alt="conjunto de encaje" className="card-img-top" />
-        <p className="card-text">{productos.description} </p>
-        <ItemCounter stock={5} initial={1} onAdd={onAdd} />
+    <div className="wrapper">
+      <div className="container">
+        <div
+          className="top"
+          style={{ backgroundImage: `url("${image}")` }}
+        ></div>
+        <div className="bottom">
+          <div className="left">
+            <div className="details">
+              <h1> {name} </h1>
+              <h4> {price} </h4>
+            </div>
+            <Link to={`/detail/${id}`} className="buy">
+              Más detalles
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );
