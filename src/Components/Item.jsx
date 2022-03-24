@@ -9,7 +9,9 @@ const Item = ({ category, name, description, price, image, id }) => {
         <div className="card-body">
           <h4 className="card-title">{name}</h4>
           <Link to={`/detail/${id}`}>
-            <button variant="primary">Más información</button>
+            <button className="btn btn-light">
+              Más información
+            </button>
           </Link>
         </div>
       </div>

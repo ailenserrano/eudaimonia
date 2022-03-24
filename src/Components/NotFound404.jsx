@@ -11,7 +11,7 @@ const NotFound404 = () => {
     >
       <div>
         <Link to={`/`}>
-          <button className="btn">Home</button>
+          <button className="btn btn-light">Home</button>
         </Link>
       </div>
     </div>

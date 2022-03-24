@@ -3,7 +3,7 @@ export default function ProductLoader() {
   return new Promise((resolve, reject) => {
 
     setTimeout(() => {
-        
+
       let products = [
         {
           id: 1,
@@ -49,7 +49,7 @@ export default function ProductLoader() {
           id: 5,
           name: "Regulable Bisou Silver",
           price: 990,
-          category: "regulables",
+          category: "bombachas",
           description: "REGULABLE BISOU SILVER",
           stock: 10,
           image:
@@ -59,7 +59,7 @@ export default function ProductLoader() {
           id: 6,
           name: "Regulable Orwell",
           price: 990,
-          category: "regulables",
+          category: "bombachas",
           description: "REGULABLE ORWELL",
           stock: 8,
           image:
@@ -69,7 +69,7 @@ export default function ProductLoader() {
           id: 7,
           name: "Regulable Cassie Gray",
           price: 990,
-          category: "regulables",
+          category: "bombachas",
           description: "REGULABLE CASSIE GRAY",
           stock: 3,
           image:
@@ -79,7 +79,7 @@ export default function ProductLoader() {
           id: 9,
           name: "Regulable Maeve Avellana",
           price: 99,
-          category: "regulables",
+          category: "bombachas",
           description: "REGULABLE MAEVE",
           stock: 5,
           image:

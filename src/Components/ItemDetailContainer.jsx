@@ -5,7 +5,7 @@ import ProductLoader from "./ProductLoader";
 import { useParams } from "react-router-dom";
 
 const ItemDetailContainer = () => {
-  const [itemDetail, setItemDetail] = useState(null);
+  const [itemDetailProduct, setItemDetail] = useState(null);
   const { seeId } = useParams();
 
   useEffect(
@@ -23,7 +23,7 @@ const ItemDetailContainer = () => {
 
   return (
     <div>
-      <ItemDetail {...ItemDetailProduct} />
+      <ItemDetail {...itemDetailProduct} />
     </div>
   );
 };

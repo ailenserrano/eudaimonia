@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ItemCounter from "./ItemCounter";
 import { Modal } from "./Modal";
 
@@ -27,20 +27,17 @@ const ItemDetail = ({
 
   return (
     <div>
-      {name}
       <div className="card" style={{ width: "18rem" }}>
-        <img src={image} className="card-img-top" alt={description} />
         <div className="card-body">
           <h4 className="card-title">{name}</h4>
+          <img src={image} className="card-img-top" alt={description} />
           <p className="card-text">{description}</p>
-          <h5>
-            Precio: $<span> {price}</span>
-          </h5>
+          <h5>Precio: ${price}</h5>
         </div>
         <ItemCounter
           stock={stock}
           count={count}
-          title={name}
+          name={name}
           setCounter={setCounter}
           onAdd={onAdd}
           category={category}
