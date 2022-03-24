@@ -10,13 +10,15 @@ import NotFound404 from "./Components/NotFound404";
 function App() {
   return (
     <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<ItemListContainer />} />
-        <Route path="/productos/:category" element={<ItemListContainer />} />
-        <Route path="/detail/:itemId" element={<ItemDetailContainer />} />
-        <Route path="*" element={<NotFound404 />} />
-      </Routes>
+      <div className="App">
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/productos/:category" element={<ItemListContainer />} />
+          <Route path="/detail/:seeId" element={<ItemDetailContainer />} />
+          <Route path="*" element={<NotFound404 />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

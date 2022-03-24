@@ -1,14 +1,15 @@
 import React from "react";
 import Item from "./Item";
 
-export const ItemList = ({ productos }) => {
+export const ItemList = ({ listProducts }) => {
   return (
-    <>
-      {productos.map((producto) => (
-        <Item {...producto} />
-      ))}
-    </>
+    <div>
+      <div className="card-group row-cols-md-4 g-4">
+        {listProducts.map((product) => (
+          <Item {...product} />
+        ))}
+      </div>
+    </div>
   );
 };
-
 export default ItemList;

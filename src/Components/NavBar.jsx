@@ -10,22 +10,22 @@ const NavBar = () => {
         className="navbar navbar-expand-lg navbar-light bg-light"
         role="navigation"
       >
-        <div className="container d-inline-flex justify-content">
+        <div className="container-fluid">
           <Link to="/">
             <img src={logo} alt="Eudaimonia logo" width={100} height={100} />
           </Link>
-          <div class="d-flex justify-content-start" id="navbarSupportedContent">
+          <div className="d-flex justify-content-start" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
+              <li className="nav-item">
                 <Link to="/">Home</Link>
               </li>
-              <li class="nav-item">
+              <li className="nav-item">
                 <Link to="/productos/conjuntos">Conjuntos</Link>
               </li>
-              <li class="nav-item">
+              <li className="nav-item">
                 <Link to="/productos/corpiños">Corpiños</Link>
               </li>
-              <li class="nav-item">
+              <li className="nav-item">
                 <Link to="/productos/bombachas">Bombachas</Link>
               </li>
             </ul>
