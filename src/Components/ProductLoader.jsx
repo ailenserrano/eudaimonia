@@ -1,9 +1,6 @@
 export default function ProductLoader() {
-
   return new Promise((resolve, reject) => {
-
     setTimeout(() => {
-
       let products = [
         {
           id: 1,
@@ -110,7 +107,7 @@ export default function ProductLoader() {
           name: "Pack: 3 regulables de puntilla (mint/blue/cherry)",
           price: 2690,
           category: "packs",
-          diescription: "PACK DE 3 REGULABLES DE PUNTILLA",
+          description: "PACK DE 3 REGULABLES DE PUNTILLA",
           stock: 6,
           image:
             "https://d3ugyf2ht6aenh.cloudfront.net/stores/525/266/products/archivo_000-231-2a57a50870e4038f5316424560024250-1024-1024.jpeg",
