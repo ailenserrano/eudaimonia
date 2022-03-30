@@ -113,7 +113,7 @@ export default function ProductLoader() {
             "https://d3ugyf2ht6aenh.cloudfront.net/stores/525/266/products/archivo_000-231-2a57a50870e4038f5316424560024250-1024-1024.jpeg",
         },
       ];
-      if (products.length != 0) {
+      if (products.length !== 0) {
         resolve(products);
       } else {
         reject("No se encontraron productos");

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { CartContext } from "../CartContext";
 import ItemCounter from "./ItemCounter";
 import { Modal } from "./Modal";
 
@@ -11,18 +12,20 @@ const ItemDetail = ({
   price,
   image,
 }) => {
-  const [count, setCounter] = useState(1);
-  const onAdd = () => {
-    const itemToCart = {
+  const {cart} = useContext(CartContext)
+  const [cantidad, setCantidad] = useState(1);
+  const handleAgregar = () => {
+    const addItem = {
       id,
       name,
-      category,
       price,
-      image,
-      count,
+      stock,
+      cantidad,
     };
 
-    console.log(itemToCart);
+    console.log(addItem);
+
+
   };
 
   return (
@@ -36,12 +39,15 @@ const ItemDetail = ({
         </div>
         <ItemCounter
           stock={stock}
-          count={count}
+          counter={cantidad}
           name={name}
-          setCounter={setCounter}
-          onAdd={onAdd}
+          setCounter={setCantidad}
+          handleAgregar={handleAgregar}
           category={category}
         />
+        <button className="btn btn-success" onClick={handleAgregar}>
+          Agregar al carrito
+        </button>
       </div>
     </div>
   );

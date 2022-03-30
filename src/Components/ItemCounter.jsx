@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Modal } from "./Modal";
 
-const ItemCounter = ({ stock, onAdd, count, name, category, setCounter }) => {
+const ItemCounter = ({ stock, counter, setCounter }) => {
   const handleRestar = () => {
-    count > 1 && setCounter(count - 1);
+    counter > 1 && setCounter(counter - 1);
   };
   const handleSumar = () => {
-    count < stock && setCounter(count + 1);
+    counter < stock && setCounter(counter + 1);
   };
+
   return (
     <div>
       <div className="btn-group" role="group">
@@ -18,7 +18,7 @@ const ItemCounter = ({ stock, onAdd, count, name, category, setCounter }) => {
         >
           -
         </button>
-        <span className="numeroProds">{count}</span>
+        <span className="numeroProds">{counter}</span>
         <button
           type="button"
           className="btn-plus btn btn-primary fas fa-plus"
@@ -27,9 +27,6 @@ const ItemCounter = ({ stock, onAdd, count, name, category, setCounter }) => {
           +
         </button>
       </div>
-
-      <br />
-      <Modal onAdd={onAdd} count={count} name={name} category={category} />
     </div>
   );
 };
