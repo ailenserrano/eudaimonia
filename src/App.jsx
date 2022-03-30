@@ -11,11 +11,15 @@ function App() {
   const [cart, setCart] = useState([]);
 
   const agregarAlCarrito = (item) => {
-    setCart();
+    setCart([...cart, item]);
+  };
+
+  const isInCart = (id) => {
+    return cart.some((prod) => prod.id === id);
   };
 
   return (
-    <CartContext.Provider value={{ cart }}>
+    <CartContext.Provider value={{ cart, agregarAlCarrito, isInCart }}>
       <BrowserRouter>
         <div className="App">
           <NavBar />

@@ -13,17 +13,13 @@ const ItemCounter = ({ stock, counter, setCounter }) => {
       <div className="btn-group" role="group">
         <button
           type="button"
-          className="btn-minus btn btn-primary fas fa-minus"
+          className="btn btn-outline-primary"
           onClick={handleRestar}
         >
           -
         </button>
         <span className="numeroProds">{counter}</span>
-        <button
-          type="button"
-          className="btn-plus btn btn-primary fas fa-plus"
-          onClick={handleSumar}
-        >
+        <button type="button" className="btn btn-primary" onClick={handleSumar}>
           +
         </button>
       </div>
