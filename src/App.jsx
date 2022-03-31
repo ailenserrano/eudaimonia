@@ -4,22 +4,12 @@ import NavBar from "./Components/NavBar";
 import ItemDetailContainer from "./Components/ItemDetailContainer";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import NotFound404 from "./Components/NotFound404";
-import { CartContext } from "./CartContext";
-import { useState } from "react";
+import { CartProvider } from "./CartContext";
+import Cart from "./Components/Cart";
 
 function App() {
-  const [cart, setCart] = useState([]);
-
-  const agregarAlCarrito = (item) => {
-    setCart([...cart, item]);
-  };
-
-  const isInCart = (id) => {
-    return cart.some((prod) => prod.id === id);
-  };
-
   return (
-    <CartContext.Provider value={{ cart, agregarAlCarrito, isInCart }}>
+    <CartProvider>
       <BrowserRouter>
         <div className="App">
           <NavBar />
@@ -30,11 +20,13 @@ function App() {
               element={<ItemListContainer />}
             />
             <Route path="/detail/:seeId" element={<ItemDetailContainer />} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="*" element={<NotFound404 />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>
       </BrowserRouter>
-    </CartContext.Provider>
+    </CartProvider>
   );
 }
 

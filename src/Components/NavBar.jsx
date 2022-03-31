@@ -16,7 +16,7 @@ const NavBar = () => {
           </Link>
           <div id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
+              <li className="nav-item home-button">
                 <Link to="/">Home</Link>
               </li>
 
@@ -34,7 +34,7 @@ const NavBar = () => {
               </li>
             </ul>
           </div>
-          <div className="btn btn-outline-secondary">
+          <div>
             <CartWidget />
           </div>
         </div>

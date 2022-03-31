@@ -29,7 +29,16 @@
 }
 
 .nav-item {
-  padding: 10px;
+  padding: 30px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.home-button {
+  text-transform: uppercase;
 }
 
 @keyframes App-logo-spin {
@@ -53,4 +62,13 @@ button {
 
 .numeroProds {
   padding: 10px;
+}
+
+.cart-widget {
+  width: 20px;
+  height: 20px;
+}
+
+.carrito {
+  justify-content: left;
 }

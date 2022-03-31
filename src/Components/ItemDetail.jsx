@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../CartContext";
 import ItemCounter from "./ItemCounter";
-import { Modal } from "./Modal";
 
 const ItemDetail = ({
   id,
@@ -15,7 +14,6 @@ const ItemDetail = ({
 }) => {
   const [cantidad, setCantidad] = useState(0);
   const { cart, agregarAlCarrito, isInCart } = useContext(CartContext);
-  console.log(cart);
   const handleAgregar = () => {
     if (cantidad === 0) return;
     if (!isInCart(id)) {
@@ -33,7 +31,7 @@ const ItemDetail = ({
 
   return (
     <div>
-      <div className="card" style={{ width: "18rem" }}>
+      <div className="card" style={{ width: "25rem" }}>
         <div className="card-body">
           <h4 className="card-title">{name}</h4>
           <img src={image} className="card-img-top" alt={description} />
