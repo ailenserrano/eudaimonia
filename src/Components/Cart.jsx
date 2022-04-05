@@ -18,10 +18,6 @@ const Cart = () => {
     );
   }
 
-  if (cart.length === 0) {
-    return <Navigate to="/" />;
-  }
-
   return (
     <>
       <div className="container">

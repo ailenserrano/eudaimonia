@@ -29,21 +29,16 @@ const ItemDetail = ({
     }
   };
 
-  return (
-    <div>
-      <div className="card" style={{ width: "25rem" }}>
-        <div className="card-body">
-          <h4 className="card-title">{name}</h4>
-          <img src={image} className="card-img-top" alt={description} />
-          <p className="card-text">{description}</p>
-          <h5>Precio: ${price}</h5>
-        </div>
-
-        {isInCart(id) ? (
-          <Link to="/cart" className="btn btn-success">
-            Terminar compra
-          </Link>
-        ) : (
+  if (isInCart(id)) {
+    return (
+      <div>
+        <div className="card" style={{ width: "25rem" }}>
+          <div className="card-body">
+            <h4 className="card-title">{name}</h4>
+            <img src={image} className="card-img-top" alt={description} />
+            <p className="card-text">{description}</p>
+            <h5>Precio: ${price}</h5>
+          </div>
           <div>
             <ItemCounter
               stock={stock}
@@ -57,7 +52,37 @@ const ItemDetail = ({
               Agregar al carrito
             </button>
           </div>
-        )}
+          <div>
+            <Link to="/cart" className="btn btn-success my-3">
+              Terminar mi compra
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div>
+      <div className="card" style={{ width: "25rem" }}>
+        <div className="card-body">
+          <h4 className="card-title">{name}</h4>
+          <img src={image} className="card-img-top" alt={description} />
+          <p className="card-text">{description}</p>
+          <h5>Precio: ${price}</h5>
+        </div>
+        <div>
+          <ItemCounter
+            stock={stock}
+            counter={cantidad}
+            name={name}
+            setCounter={setCantidad}
+            handleAgregar={handleAgregar}
+            category={category}
+          />
+          <button className="btn btn-success" onClick={handleAgregar}>
+            Agregar al carrito
+          </button>
+        </div>
       </div>
     </div>
   );
