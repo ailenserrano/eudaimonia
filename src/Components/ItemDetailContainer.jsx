@@ -1,29 +1,32 @@
 import React from "react";
 import ItemDetail from "./ItemDetail";
 import { useEffect, useState } from "react";
-import ProductLoader from "./ProductLoader";
 import { useParams } from "react-router-dom";
+import { db } from "../firebase/config";
+import { doc, getDoc } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
+  const [loading, setLoading] = useState(false);
   const [itemDetailProduct, setItemDetail] = useState(null);
   const { seeId } = useParams();
 
-  useEffect(
-    () =>
-      ProductLoader()
-        .then((prod) => {
-          setItemDetail(prod.find((product) => product.id === Number(seeId)));
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-        .finally(() => console.log("Terminó")),
-    []
-  );
+  useEffect(() => {
+    setLoading(true);
+
+    const docRef = doc(db, "products", seeId);
+
+    getDoc(docRef)
+      .then((doc) => {
+        setItemDetail({ id: doc.id, ...doc.data() });
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <div>
-      <ItemDetail {...itemDetailProduct} />
+      {loading ? <h2>Loading...</h2> : <ItemDetail {...itemDetailProduct} />}
     </div>
   );
 };

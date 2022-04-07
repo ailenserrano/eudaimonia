@@ -75,7 +75,7 @@ export default function ProductLoader() {
         {
           id: 9,
           name: "Regulable Maeve Avellana",
-          price: 99,
+          price: 990,
           category: "bombachas",
           description: "REGULABLE MAEVE",
           stock: 5,
