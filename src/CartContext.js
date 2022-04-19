@@ -1,9 +1,11 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [updateTotalCart, setUpdate] = useState();
+  const [updateTotalWidget, setUpdateWidget] = useState();
 
   const agregarAlCarrito = (item) => {
     setCart([...cart, item]);
@@ -29,6 +31,28 @@ export const CartProvider = ({ children }) => {
     setCart(cart.filter((prod) => prod.id !== id));
   };
 
+  const handleChange = (value, id) => {
+    const index = cart.findIndex((prod) => prod.id == id);
+    console.log(cart[index]);
+    cart[index].count = Number(value);
+    console.log(cart[index].count);
+  };
+
+  const addCount = (value, id) => {
+    handleChange(value, id);
+    setUpdate(!updateTotalCart);
+  };
+  useEffect(() => {
+    totalCart();
+  }, [updateTotalCart]);
+
+  const addWidget = () => {
+    setUpdateWidget(!updateTotalWidget);
+  };
+  useEffect(() => {
+    cantidadCart();
+  }, [updateTotalWidget]);
+
   return (
     <CartContext.Provider
       value={{
@@ -39,6 +63,8 @@ export const CartProvider = ({ children }) => {
         totalCart,
         vaciarCart,
         eliminarItem,
+        addCount,
+        addWidget,
       }}
     >
       {children}

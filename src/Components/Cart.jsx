@@ -4,7 +4,7 @@ import { BsFillTrashFill } from "react-icons/bs";
 import { Link, Navigate } from "react-router-dom";
 
 const Cart = () => {
-  const { cart, totalCart, eliminarItem, vaciarCart } = useContext(CartContext);
+  const { cart, totalCart, eliminarItem, vaciarCart, addCount } = useContext(CartContext);
 
   // render si el cart está vacío
   if (cart.length === 0) {

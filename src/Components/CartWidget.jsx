@@ -9,8 +9,8 @@ function CartWidget() {
     <div>
       <Link to="/cart">
         <AiOutlineShoppingCart className="cart-widget" />
+        {cantidadCart() !== 0 && <span>{cantidadCart()}</span>}
       </Link>
-      <span>{cantidadCart()} </span>
     </div>
   );
 }

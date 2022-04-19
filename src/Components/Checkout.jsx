@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../CartContext";
 import { Link, Navigate } from "react-router-dom";
-import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { collection, addDoc, Timestamp, updateDoc, doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase/config";
 
 export const Checkout = () => {
@@ -19,9 +19,17 @@ export const Checkout = () => {
 
     const ordersRef = collection(db, "orders");
 
-    addDoc(ordersRef, orden).then((doc) => {
-      console.log(doc.id);
-      setOrderId(doc.id);
+    addDoc(ordersRef, orden).then((resp) => {
+
+        cart.forEach((item) => {
+            const docRef = doc(db, 'products', item.id)
+            getDoc(docRef)
+            .then((dbDoc) => {
+              updateDoc(docRef, {stock: dbDoc.data().stock - item.cantidad})
+            })
+        })
+
+      setOrderId(resp.id);
       vaciarCart()
     })
     .catch((err) => {
