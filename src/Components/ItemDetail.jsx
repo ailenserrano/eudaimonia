@@ -15,8 +15,6 @@ const ItemDetail = ({
   const [cantidad, setCantidad] = useState(0);
   const { cart, agregarAlCarrito, isInCart, addWidget } = useContext(CartContext);
   const handleAgregar = () => {
-    if (cantidad === 0) return;
-    if (!isInCart(id)) {
       const addItem = {
         id,
         name,
@@ -26,15 +24,8 @@ const ItemDetail = ({
       };
 
       agregarAlCarrito(addItem);
-    } else {
-      const index = cart.findIndex((prod) => prod.id == id);
-      console.log(typeof cart[index].cantidad);
-      console.log(typeof cantidad);
-      cart[index].cantidad = Number(cart[index].count) + cantidad;
-      console.log(cart[index].cantidad);
-      addWidget();
     }
-  };
+
 
 
   return (

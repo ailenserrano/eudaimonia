@@ -7,8 +7,34 @@ export const CartProvider = ({ children }) => {
   const [updateTotalCart, setUpdate] = useState();
   const [updateTotalWidget, setUpdateWidget] = useState();
 
-  const agregarAlCarrito = (item) => {
-    setCart([...cart, item]);
+  const agregarAlCarrito = (itemCount) => {
+
+    if (cart.find(item => item.id === itemCount.id)) {
+
+      const newCartItem = cart.map(item => {
+
+        if (item.id === itemCount.id) {
+
+          return { ...item, cantidad: itemCount.cantidad + item.cantidad };
+
+        }
+
+        return item;
+
+      });
+
+      setCart(newCartItem);
+
+    } else {
+
+      setCart(state => {
+
+        return [...state, itemCount];
+
+      });
+
+    }
+
   };
 
   const isInCart = (id) => {
@@ -31,27 +57,7 @@ export const CartProvider = ({ children }) => {
     setCart(cart.filter((prod) => prod.id !== id));
   };
 
-  const handleChange = (value, id) => {
-    const index = cart.findIndex((prod) => prod.id == id);
-    console.log(cart[index]);
-    cart[index].count = Number(value);
-    console.log(cart[index].count);
-  };
-
-  const addCount = (value, id) => {
-    handleChange(value, id);
-    setUpdate(!updateTotalCart);
-  };
-  useEffect(() => {
-    totalCart();
-  }, [updateTotalCart]);
-
-  const addWidget = () => {
-    setUpdateWidget(!updateTotalWidget);
-  };
-  useEffect(() => {
-    cantidadCart();
-  }, [updateTotalWidget]);
+ 
 
   return (
     <CartContext.Provider
@@ -63,8 +69,6 @@ export const CartProvider = ({ children }) => {
         totalCart,
         vaciarCart,
         eliminarItem,
-        addCount,
-        addWidget,
       }}
     >
       {children}
